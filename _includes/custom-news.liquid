@@ -1,0 +1,41 @@
+<div class="news">
+
+  {%- comment -%}
+  Load news from _data/news.yml and sort by date (newest first)
+  {%- endcomment -%}
+  {% assign news = site.data.news | sort: "date" | reverse %}
+  {% assign news_size = news | size %}
+
+  {%- comment -%}
+  Scroll container (CSS must define .news-scroll)
+  {%- endcomment -%}
+  <div class="news-scroll">
+
+    <table class="table table-sm table-borderless">
+
+      {%- comment -%}
+      Apply announcement limit from about.md
+      {%- endcomment -%}
+      {% if include.limit and page.announcements.limit %}
+        {% assign news_limit = page.announcements.limit %}
+      {% else %}
+        {% assign news_limit = news_size %}
+      {% endif %}
+
+      {%- comment -%}
+      Render news rows
+      {%- endcomment -%}
+      {% for item in news limit: news_limit %}
+        <tr>
+          <th scope="row" style="width: 20%">
+            {{ item.date | date: '%b %Y' }}
+          </th>
+          <td>
+            {{ item.text | emojify }}
+          </td>
+        </tr>
+      {% endfor %}
+
+    </table>
+  </div>
+</div>
