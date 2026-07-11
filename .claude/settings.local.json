@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/kunal/Desktop/Projects/portfolio/kunal-mahatha.github.io log --oneline -- _pages/cv.md)",
+      "Bash(git -C /Users/kunal/Desktop/Projects/portfolio/kunal-mahatha.github.io show HEAD:_pages/cv.md)",
+      "Bash(bundle exec *)",
+      "Bash(curl -sI http://127.0.0.1:4000/al-folio/)",
+      "Bash(jobs -l)",
+      "Bash(lsof -iTCP:4000 -sTCP:LISTEN)",
+      "Bash(pkill -f \"jekyll serve\")"
+    ]
+  }
+}
